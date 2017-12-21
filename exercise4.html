@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<htmllang="en">
+
+  <head>
+    <metacharset="UTF-8">
+      <title>Document</title>
+      <linkrel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+      <script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
+  </head>
+  <style>
+    td{
+      text-align: center;
+    }
+    td,th{
+      border:solid 2px black;
+    }
+    .delete{
+      width:100%;
+    }
+  </style>
+    <form>
+      Title: <input type="text" id="title"/>
+      Rating <input type="number" min="0" max="10" id="rating" />
+      <button id="submit">Add Movie</button>
+    </form>
+    <table style="width:600px">
+      <tr>
+        <th>Title</th>
+        <th>Rating</th>
+        <th>Delete</th>
+      </tr>
+    </table>
+  <body>
+  </body>
+  <script>
+      $(document).ready(function(){
+        $("#submit").bind("click", function(e){
+          e.preventDefault();
+          $("<tr></tr>").appendTo("table")
+          $("<td>"+ $("#title").val() +"</td>").appendTo("tr:last");
+          $("<td>"+ $("#rating").val() +"</td>").appendTo("tr:last");
+          $("<button class='delete'>Delete</button>").appendTo("tr:last");
+          $(".delete").bind("click",function(){
+            $(this).parent().remove();
+          });
+        });
+      });
+  </script>
+  </html>
